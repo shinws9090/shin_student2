@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionListener;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.swing.JLabel;
@@ -12,11 +13,14 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.RowSorter;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import shin_student2.dto.Student;
 import shin_student2.ui.exception.NotSelectedException;
@@ -81,6 +85,9 @@ public abstract class SuperTable extends JPanel implements ActionListener{
 		}
 		CustomTableModel model = new CustomTableModel(data, getColumnNames());
 		table.setModel(model);
+		
+		RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+		table.setRowSorter(sorter);
 
 		setTebleModelMode();
 //		// 컬럼 내용 정렬
@@ -154,5 +161,12 @@ public abstract class SuperTable extends JPanel implements ActionListener{
 			return this;
 		}
 
+	}
+	class CumtomTableRowSorter extends TableRowSorter<TableModel> {
+		@Override
+		public Comparator<?> getComparator(int column) {
+			// TODO Auto-generated method stub
+			return super.getComparator(column);
+		}
 	}
 }

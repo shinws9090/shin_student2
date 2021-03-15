@@ -33,6 +33,7 @@ public class stdManag extends JFrame implements ActionListener {
 	private StudentService stdService = StudentService.getInstance();
 	private StdTablePanel pStdTable;
 	private Student student;
+	private JButton btnClear;
 	
 	public JButton getBtnInsetAndUpdate() {
 		return btnInsetAndUpdate;
@@ -68,6 +69,10 @@ public class stdManag extends JFrame implements ActionListener {
 		btnInsetAndUpdate = new JButton("");
 		btnInsetAndUpdate.addActionListener(this);
 		pBtn.add(btnInsetAndUpdate);
+		
+		btnClear = new JButton("취소");
+		btnClear.addActionListener(this);
+		pBtn.add(btnClear);
 	}
 
 	public void setvalue(Student std) {
@@ -76,6 +81,9 @@ public class stdManag extends JFrame implements ActionListener {
 	
 	
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnClear) {
+			do_btnClear_actionPerformed(e);
+		}
 		try {
 		if (e.getSource() == btnInsetAndUpdate) {
 			if(e.getActionCommand().equals("추가")) {
@@ -86,7 +94,9 @@ public class stdManag extends JFrame implements ActionListener {
 			}
 			
 			byte[] data = Files.readAllBytes(pCenter.getChooserFile().toPath());
+			
 			FileOutputStream fos = new FileOutputStream(imgPath+student.getPic());
+			
 			fos.write(data);
 		}
 		}catch(SqlConstraintException | InvalidCheckException | IOException e1) {
@@ -94,11 +104,12 @@ public class stdManag extends JFrame implements ActionListener {
 		}
 	}
 	protected void btnInset_actionPerformed(ActionEvent e) {
-		
+		pCenter.clearValue();
 		student = pCenter.getStudent();
 		String res = stdService.addStudent(student);
 		if(res.equals("commit")) {
 			JOptionPane.showMessageDialog(null, "추가 완료");
+			setVisible(false);
 		}else {
 			JOptionPane.showMessageDialog(null, "중복 및 빈칸이 있습니다.");
 		}
@@ -109,10 +120,15 @@ public class stdManag extends JFrame implements ActionListener {
 		student = pCenter.getStudent();
 		stdService.modifyStudent(student);
 		JOptionPane.showMessageDialog(null, student+"수정완료");
+		setVisible(false);
 		pStdTable.loadData("");
 	}
 	public void UPTable(StdTablePanel pStdTable) {
+		
 		this.pStdTable=pStdTable;
 		
+	}
+	protected void do_btnClear_actionPerformed(ActionEvent e) {
+		pCenter.clearValue();
 	}
 }

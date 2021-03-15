@@ -46,13 +46,10 @@ public class StdManagPanel extends JPanel implements ActionListener {
 	private String imgPath = System.getProperty("user.dir") + File.separator + "images" + File.separator;
 	private JLabel lblPic;
 	private File chooserFile;
-	
-	
 
 	public File getChooserFile() {
 		return chooserFile;
 	}
-
 
 	public StdManagPanel() {
 
@@ -62,23 +59,22 @@ public class StdManagPanel extends JPanel implements ActionListener {
 	private void initialize() {
 		setBounds(20, 119, 340, 266);
 		setLayout(new GridLayout(0, 2, 10, 10));
-		
+
 		JPanel panel = new JPanel();
 		panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		add(panel);
 		panel.setLayout(new BorderLayout(10, 10));
-		
+
 		lblPic = new JLabel("");
 		panel.add(lblPic, BorderLayout.CENTER);
-		
+
 		btnPic = new JButton("사진불러오기");
 		btnPic.addActionListener(this);
 		panel.add(btnPic, BorderLayout.SOUTH);
-		
+
 		JPanel panel_1 = new JPanel();
 		add(panel_1);
 		panel_1.setLayout(new GridLayout(0, 2, 0, 5));
-		
 
 		JLabel lblDays = new JLabel("주야구분");
 		lblDays.setHorizontalAlignment(SwingConstants.CENTER);
@@ -130,7 +126,7 @@ public class StdManagPanel extends JPanel implements ActionListener {
 		JLabel lblBirthday = new JLabel("생년월일");
 		lblBirthday.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblBirthday);
-		
+
 		chBirthday = new JDateChooser();
 		panel_1.add(chBirthday);
 
@@ -152,7 +148,8 @@ public class StdManagPanel extends JPanel implements ActionListener {
 	public Student getStudent() {
 		if (cbSocial.getSelectedIndex() == 0 || cbDayTime.getSelectedIndex() == 0 || cbDept.getSelectedIndex() == 0
 				|| cbGrade.getSelectedIndex() == 0 || cbAtd.getSelectedIndex() == 0 || cbMilt.getSelectedIndex() == 0
-				|| tfNo.getText().equals("") || chBirthday.getDateFormatString().equals("") || tfName.getText().equals("")) {
+				|| tfNo.getText().equals("") || chBirthday.getDateFormatString().equals("")
+				|| tfName.getText().equals("")) {
 			throw new InvalidCheckException();
 		}
 
@@ -183,12 +180,12 @@ public class StdManagPanel extends JPanel implements ActionListener {
 		miltno = miltno.getMiltno() == null ? null : (Militarys) cbMilt.getSelectedItem();
 
 		String pic = chooserFile.getName();
-		
-		return new Student(no, name, birthday, social, dayno, deptno, grade, atdno, miltno,pic);
+
+		return new Student(no, name, birthday, social, dayno, deptno, grade, atdno, miltno, pic);
 	}
 
 	public void setvalue(Student std) {
-		
+
 		cbDayTime.setSelectedItem(std.getDayno());
 		cbDept.setSelectedItem(std.getDeptno());
 
@@ -206,10 +203,10 @@ public class StdManagPanel extends JPanel implements ActionListener {
 		// 객체가 달라서 안되는듯
 		cbMilt.setSelectedItem(std.getMiltno());
 		cbAtd.setSelectedItem(std.getAtdno());
-		
-		System.out.println(imgPath+std.getPic());
-		lblPic.setIcon(new ImageIcon(imgPath+std.getPic()));
-		chooserFile = new File(imgPath+std.getPic());
+
+		System.out.println(imgPath + std.getPic());
+		lblPic.setIcon(new ImageIcon(imgPath + std.getPic()));
+		chooserFile = new File(imgPath + std.getPic());
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
@@ -217,6 +214,7 @@ public class StdManagPanel extends JPanel implements ActionListener {
 			do_btnNewButton_actionPerformed(arg0);
 		}
 	}
+
 	protected void do_btnNewButton_actionPerformed(ActionEvent arg0) {
 		String openPath = "C:\\Users\\lenovo\\Downloads";
 		JFileChooser chooser = new JFileChooser(openPath);
@@ -227,15 +225,31 @@ public class StdManagPanel extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다.", "경고", JOptionPane.WARNING_MESSAGE);
 			return;
 		} else {
+
 			chooserFile = chooser.getSelectedFile();
 			lblPic.setIcon(new ImageIcon(chooserFile.getPath()));
 
-		
 		}
 	}
 
+	public void clearValue() {
 
+		cbDayTime.setSelectedIndex(0);
+		cbDept.setSelectedIndex(0);
 
+		cbGrade.setSelectedIndex(0);
 
-	
+		tfName.setText("");
+		tfNo.setText("");
+		chBirthday.setDate(null);
+
+		
+		cbSocial.setSelectedIndex(0);
+		cbMilt.setSelectedIndex(0);
+		cbAtd.setSelectedIndex(0);
+
+		lblPic.setIcon(null);
+		chooserFile = null;
+	}
+
 }
