@@ -11,8 +11,8 @@ import javax.swing.SwingConstants;
 
 import shin_student2.dto.Student;
 import shin_student2.service.StudentService;
-import shin_student2.ui.scoManag;
-import shin_student2.ui.stdManag;
+import shin_student2.ui.scoManagFrame;
+import shin_student2.ui.stdManagFrame;
 import shin_student2.ui.exception.NotSelectedException;
 
 public class ScoTablePanel extends SuperTable {
@@ -21,7 +21,7 @@ public class ScoTablePanel extends SuperTable {
 	@Override
 	public String[] getColumnNames() {
 		// TODO Auto-generated method stub
-		return new String[] { "학과", "이름", "학번", "1과목", "2과목", "3과목", "총점", "평균", "평어", "평점" };
+		return new String[] { "학번", "학과", "이름", "1과목", "2과목", "3과목", "총점", "평균", "평어", "평점" };
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class ScoTablePanel extends SuperTable {
 	@Override
 	public Object[] toArray(Student s) {
 		// TODO Auto-generated method stub
-		return new Object[] { s.getDeptno().getDeptname(), s.getName(), s.getNo(), s.getScores().get(0).getScoer(),
+		return new Object[] { s.getNo(), s.getDeptno().getDeptname(), s.getName(),  s.getScores().get(0).getScoer(),
 				s.getScores().get(1).getScoer(), s.getScores().get(2).getScoer(), s.getTotal(), s.getAvg(), s.getRank(),
 				s.getRanksco() };
 	}
@@ -59,7 +59,7 @@ public class ScoTablePanel extends SuperTable {
 		try {
 			if (e.getSource() == update) {
 				Student student = getItem();
-				scoManag frame = new scoManag();
+				scoManagFrame frame = new scoManagFrame();
 				frame.setVisible(true);
 				frame.getBtnUp().setText("저장");
 				frame.setvalue(student);

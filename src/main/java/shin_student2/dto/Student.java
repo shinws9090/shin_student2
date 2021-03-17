@@ -14,6 +14,8 @@ public class Student {
 	private Attendings atdno;
 	private Militarys miltno;
 	private List<Score> scores;
+	
+	
 	private int total;
 	private double avg;
 	private String rank;
@@ -77,6 +79,13 @@ public class Student {
 		this.rank = rank;
 		this.ranksco = ranksco;
 		this.pic = pic;
+	}
+
+	
+
+	public Student(int no) {
+		super();
+		this.no = no;
 	}
 
 	public String getPic() {
@@ -215,5 +224,27 @@ public class Student {
 //	public String toString() {
 //		return String.format("%s", no);
 //	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + no;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (no != other.no)
+			return false;
+		return true;
+	}
 
 }

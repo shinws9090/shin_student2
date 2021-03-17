@@ -24,7 +24,7 @@ import shin_student2.ui.exception.SqlConstraintException;
 import shin_student2.ui.stdPanel.StdManagPanel;
 import shin_student2.ui.table.StdTablePanel;
 
-public class stdManag extends JFrame implements ActionListener {
+public class stdManagFrame extends JFrame implements ActionListener {
 	
 	private String imgPath = System.getProperty("user.dir") + File.separator + "images" + File.separator;
 	private JPanel contentPane;
@@ -42,12 +42,12 @@ public class stdManag extends JFrame implements ActionListener {
 		this.btnInsetAndUpdate = btnInsetAndUpdate;
 	}
 	
-	public stdManag() {
+	public stdManagFrame() {
 		initialize();
 	}
 	private void initialize() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 325, 401);
+		setBounds(100, 100, 454, 401);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -101,10 +101,13 @@ public class stdManag extends JFrame implements ActionListener {
 		}
 		}catch(SqlConstraintException | InvalidCheckException | IOException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
+		}catch(NumberFormatException e1) {
+			JOptionPane.showMessageDialog(null, "학번은 숫자로 입력바랍니다.");
+			
 		}
 	}
 	protected void btnInset_actionPerformed(ActionEvent e) {
-		pCenter.clearValue();
+		
 		student = pCenter.getStudent();
 		String res = stdService.addStudent(student);
 		if(res.equals("commit")) {
@@ -123,12 +126,16 @@ public class stdManag extends JFrame implements ActionListener {
 		setVisible(false);
 		pStdTable.loadData("");
 	}
-	public void UPTable(StdTablePanel pStdTable) {
+	public void setTable(StdTablePanel pStdTable) {
 		
 		this.pStdTable=pStdTable;
 		
 	}
 	protected void do_btnClear_actionPerformed(ActionEvent e) {
+		pCenter.clearValue();
+	}
+	
+	public void clearValue() {
 		pCenter.clearValue();
 	}
 }

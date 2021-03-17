@@ -128,6 +128,21 @@ ALTER TABLE `student2`.`subjects`
 			`subjectno` -- 과목코드
 		);
 
+-- 관리자ID
+CREATE TABLE `student2`.`ManagerUser` (
+	`ID`    VARCHAR(20) NOT NULL COMMENT '아이디', -- 아이디
+	`pass`  CHAR(41)    NULL     COMMENT '비밀번호', -- 비밀번호
+	`email` CHAR(50)    NULL     COMMENT '이메일' -- 이메일
+)
+COMMENT '관리자ID';
+
+-- 관리자ID
+ALTER TABLE `student2`.`ManagerUser`
+	ADD CONSTRAINT `PK_ManagerUser` -- 관리자ID 기본키
+		PRIMARY KEY (
+			`ID` -- 아이디
+		);
+
 -- 학생정보
 ALTER TABLE `student2`.`students`
 	ADD CONSTRAINT `FK_attendings_TO_students` -- 학적 -> 학생정보
@@ -187,7 +202,6 @@ ALTER TABLE `student2`.`scores`
 		REFERENCES `student2`.`subjects` ( -- 과목
 			`subjectno` -- 과목코드
 		);
-	
 grant all
 	on student2.*
 	to 'user_student2'@'localhost' identified by 'rootroot';

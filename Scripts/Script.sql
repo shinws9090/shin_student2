@@ -97,4 +97,26 @@ update scores
 select  curdate();
 
 
+
+-- 로그인 작업
+
+select ID , pass , email 
+from manageruser 
+where id = 'shinws9090' and pass = password('1234');
+
+select * from manageruser m ;
+
+insert into manageruser 
+values ('shinws9090',password('1234'),'shinws9090@naver.com');
+
+delete from manageruser 
+where id = 'shinws9090' and pass = password('1234');
+
+select ID 
+from manageruser 
+where id = 'shinws9090' and pass = password('1234');
+
+
+
+
 	

@@ -1,14 +1,14 @@
 package shin_student2.dto;
 
 public class Score {
-
+	
 	private Subject subject;
 	private int score;
 	
-	public Score(Subject subject, int scoer) {
+	public Score(Subject subject, int score) {
 		super();
 		this.subject = subject;
-		this.score = scoer;
+		this.score = score;
 	}
 	public Subject getSubject() {
 		return subject;

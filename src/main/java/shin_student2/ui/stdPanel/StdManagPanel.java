@@ -66,6 +66,7 @@ public class StdManagPanel extends JPanel implements ActionListener {
 		panel.setLayout(new BorderLayout(10, 10));
 
 		lblPic = new JLabel("");
+		lblPic.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblPic, BorderLayout.CENTER);
 
 		btnPic = new JButton("사진불러오기");
@@ -145,14 +146,15 @@ public class StdManagPanel extends JPanel implements ActionListener {
 		panel_1.add(cbMilt);
 	}
 
-	public Student getStudent() {
+	public Student getStudent(){
 		if (cbSocial.getSelectedIndex() == 0 || cbDayTime.getSelectedIndex() == 0 || cbDept.getSelectedIndex() == 0
 				|| cbGrade.getSelectedIndex() == 0 || cbAtd.getSelectedIndex() == 0 || cbMilt.getSelectedIndex() == 0
 				|| tfNo.getText().equals("") || chBirthday.getDateFormatString().equals("")
-				|| tfName.getText().equals("")) {
+				|| tfName.getText().equals("")||chooserFile==null) {
+			
 			throw new InvalidCheckException();
 		}
-
+				
 		int no = Integer.parseInt(tfNo.getText());
 
 		String name = tfName.getText();

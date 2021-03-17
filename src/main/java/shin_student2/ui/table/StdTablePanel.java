@@ -7,7 +7,7 @@ import javax.swing.SwingConstants;
 
 import shin_student2.dto.Student;
 import shin_student2.service.StudentService;
-import shin_student2.ui.stdManag;
+import shin_student2.ui.stdManagFrame;
 import shin_student2.ui.exception.NotSelectedException;
 
 public class StdTablePanel extends SuperTable {
@@ -48,11 +48,11 @@ public class StdTablePanel extends SuperTable {
 		try {
 		if (e.getSource() == update) {
 			Student student = getItem();
-			stdManag frame = new stdManag();
+			stdManagFrame frame = new stdManagFrame();
 			frame.setVisible(true);
 			frame.getBtnInsetAndUpdate().setText("저장");
 			frame.setvalue(student);
-			frame.UPTable(this);
+			frame.setTable(this);
 		}
 		if (e.getSource() == delete) {
 			Student student = getItem();

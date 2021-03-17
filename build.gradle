@@ -23,6 +23,9 @@ javadoc {
 }
 
 dependencies {
+// https://mvnrepository.com/artifact/com.toedter/jcalendar
+implementation group: 'com.toedter', name: 'jcalendar', version: '1.4'
+
 
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.49'
 
@@ -34,7 +37,7 @@ dependencies {
 jar {
 	version = 1.0
 
-mainClassName= 'shin_student2.ui.Main'
+mainClassName= 'shin_student2.ui.MainFrame'
 baseName= 'Main'
 appendix = 'bin'
 manifest{

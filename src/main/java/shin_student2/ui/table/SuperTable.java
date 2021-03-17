@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
@@ -67,10 +68,11 @@ public abstract class SuperTable extends JPanel implements ActionListener{
 	
 	public Student getItem() {
 		int idx = table.getSelectedRow();
+		int stdno = (int) table.getValueAt(idx, 0);
 		if(idx == -1) {
 			throw new NotSelectedException();
 		}
-		return list.get(idx);
+		return list.get(list.indexOf(new Student(stdno)));
 	}
 	
 	public void setList() {
@@ -82,6 +84,7 @@ public abstract class SuperTable extends JPanel implements ActionListener{
 			}
 		} else {
 			data = new Object[0][];
+			JOptionPane.showMessageDialog(null,"검색결과가 없습니다.");
 		}
 		CustomTableModel model = new CustomTableModel(data, getColumnNames());
 		table.setModel(model);

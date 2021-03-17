@@ -3,6 +3,7 @@ package shin_student2.ui.scoPanel;
 import java.awt.FlowLayout;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -95,16 +96,20 @@ public class ScoManagPanel extends JPanel {
 		if (tfSub1.getText().equals("") || tfSub2.getText().equals("") || tfSub3.getText().equals("")) {
 			throw new InvalidCheckException();
 		}
-
-		student.getScores().get(0).setScoer(Integer.parseInt(tfSub1.getText()));
-		student.getScores().get(1).setScoer(Integer.parseInt(tfSub2.getText()));
-		student.getScores().get(2).setScoer(Integer.parseInt(tfSub3.getText()));
-
+		try {
+			student.getScores().get(0).setScoer(Integer.parseInt(tfSub1.getText()));
+			student.getScores().get(1).setScoer(Integer.parseInt(tfSub2.getText()));
+			student.getScores().get(2).setScoer(Integer.parseInt(tfSub3.getText()));
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "성적이 이상함다");
+			return null;
+		}
 		return student;
 	}
 
 	public void setvalue(Student student) {
 		this.student = student;
+		
 		tfDept.setText(student.getDeptno().getDeptname());
 		tfSub1.setText(student.getScores().get(0).getScoer() + "");
 		tfGrade.setText(student.getGrade() + "");
@@ -112,6 +117,13 @@ public class ScoManagPanel extends JPanel {
 		tfNo.setText(student.getNo() + "");
 		tfSub3.setText(student.getScores().get(2).getScoer() + "");
 		tfName.setText(student.getName());
+
+	}
+
+	public void clearTf() {
+		tfSub1.setText("");
+		tfSub2.setText("");
+		tfSub3.setText("");
 
 	}
 

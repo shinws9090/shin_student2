@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
@@ -14,7 +15,7 @@ import shin_student2.dto.Days;
 import shin_student2.dto.Department;
 import shin_student2.dto.Militarys;
 import shin_student2.dto.Student;
-import shin_student2.ui.stdManag;
+import shin_student2.ui.stdManagFrame;
 import shin_student2.ui.table.StdTablePanel;
 
 import java.awt.event.ActionListener;
@@ -29,7 +30,7 @@ public class StdLHPanel extends JPanel implements ActionListener {
 	private JButton btnSearch;
 	private JButton btnInsert;
 	private JButton btnDelete;
-	private stdManag frame;
+	private stdManagFrame frame;
 
 	public JTextField getTfName() {
 		return tfName;
@@ -84,7 +85,6 @@ public class StdLHPanel extends JPanel implements ActionListener {
 		tfName = new JTextField();
 		tfName.setHorizontalAlignment(SwingConstants.RIGHT);
 		pTop.add(tfName);
-		tfName.setColumns(10);
 
 		JPanel panel_5 = new JPanel();
 		pTop.add(panel_5);
@@ -95,7 +95,6 @@ public class StdLHPanel extends JPanel implements ActionListener {
 
 		tfStdNo = new JTextField();
 		tfStdNo.setHorizontalAlignment(SwingConstants.RIGHT);
-		tfStdNo.setColumns(10);
 		pTop.add(tfStdNo);
 
 		btnSearch = new JButton("검색");
@@ -126,8 +125,8 @@ public class StdLHPanel extends JPanel implements ActionListener {
 		btnDelete = new JButton("취소");
 		btnDelete.addActionListener(this);
 		pSouth.add(btnDelete);
-		
-		frame = new stdManag();
+
+		frame = new stdManagFrame();
 	}
 
 	public Student getStudent() {
@@ -148,11 +147,17 @@ public class StdLHPanel extends JPanel implements ActionListener {
 			} else {
 				std = new Student();
 				std.setName(tfName.getText());
-				try {
-					std.setNo(Integer.parseInt(tfStdNo.getText()));
-				} catch (Exception e) {
-
+				if (tfStdNo.getText().equals("")) {
+					std.setNo(0);
+				} else {
+					try {
+						std.setNo(Integer.parseInt(tfStdNo.getText()));
+					} catch (NumberFormatException e) {
+						std.setNo(-1);
+						JOptionPane.showMessageDialog(null, "학생번호가 이상함다");
+					}
 				}
+
 			}
 		}
 
@@ -174,7 +179,7 @@ public class StdLHPanel extends JPanel implements ActionListener {
 	protected void btnAcc_1ActionPerformed(ActionEvent e) {
 		if (pCenter.isVisible()) {
 			pCenter.setVisible(false);
-			pCenter.clear();
+			pCenter.clearTf();
 			btnAcc.setText("상새조회▼");
 		} else {
 			pCenter.setVisible(true);
@@ -182,15 +187,25 @@ public class StdLHPanel extends JPanel implements ActionListener {
 
 		}
 	}
+
 	protected void do_btnInsert_actionPerformed(ActionEvent e) {
+		frame.clearValue();
 		frame.setVisible(true);
 		frame.getBtnInsetAndUpdate().setText("추가");
 	}
+
 	protected void do_btnDelete_actionPerformed(ActionEvent e) {
+		clearTf();
+		pCenter.clearTf();
 	}
 
-	public void UPTable(StdTablePanel pStdTable) {
-		frame.UPTable(pStdTable);
-		
+	private void clearTf() {
+		tfName.setText("");
+		tfStdNo.setText("");
+	}
+
+	public void setTable(StdTablePanel pStdTable) {
+		frame.setTable(pStdTable);
+
 	}
 }

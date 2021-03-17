@@ -101,7 +101,7 @@ public class StdLHSearchPanel extends JPanel {
 		
 		cbMilt = new JComboBox<Militarys>(new Vector<Militarys>(listService.MiltComboBox()));
 		add(cbMilt);
-		clear();
+		clearTf();
 	}
 	public Student getStudent() {
 		int idx =cbSocial.getSelectedIndex()
@@ -110,6 +110,7 @@ public class StdLHSearchPanel extends JPanel {
 				+cbMilt.getSelectedIndex();
 		
 		if(idx <= 0) {
+			System.out.println("Asdasd");
 			return null;
 		}
 		
@@ -134,10 +135,12 @@ public class StdLHSearchPanel extends JPanel {
 		atdno = atdno.getAtdno()==null?null:(Attendings) cbAtd.getSelectedItem();
 		Militarys miltno = (Militarys) cbMilt.getSelectedItem();
 		miltno = miltno.getMiltno()==null?null:(Militarys) cbMilt.getSelectedItem();
+		
+		
 		return new Student(social, dayno, deptno, grade, atdno, miltno);
 	}
 	
-	public void clear() {
+	public void clearTf() {
 		cbSocial.setSelectedIndex(0);
 		cbSocial.setSelectedIndex(0);
 		cbDayTime.setSelectedIndex(0);

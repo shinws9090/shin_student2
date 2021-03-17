@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import shin_student2.dao.StudentDao;
 import shin_student2.dto.Student;
 import shin_student2.ui.exception.SqlConstraintException;
 import shin_student2.util.JdbcUtil;

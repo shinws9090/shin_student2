@@ -20,19 +20,20 @@ import shin_student2.ui.exception.SqlConstraintException;
 import shin_student2.ui.scoPanel.ScoManagPanel;
 import shin_student2.ui.table.ScoTablePanel;
 
-public class scoManag extends JFrame implements ActionListener {
+public class scoManagFrame extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JButton btnUp;
 	private ScoManagPanel pCenter;
 	private ScoreService service = ScoreService.getInstance();
 	private ScoTablePanel table;
+	private JButton btnClear;
 
 	public JButton getBtnUp() {
 		return btnUp;
 	}
 
-	public scoManag() {
+	public scoManagFrame() {
 		initialize();
 	}
 
@@ -61,11 +62,15 @@ public class scoManag extends JFrame implements ActionListener {
 		btnUp.addActionListener(this);
 		pBtn.add(btnUp);
 
-		JButton btnClear = new JButton("취소");
+		btnClear = new JButton("취소");
+		btnClear.addActionListener(this);
 		pBtn.add(btnClear);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnClear) {
+			do_btnClear_actionPerformed(e);
+		}
 		try {
 			if (e.getSource() == btnUp) {
 				do_btnUp_actionPerformed(e);
@@ -77,8 +82,11 @@ public class scoManag extends JFrame implements ActionListener {
 
 	protected void do_btnUp_actionPerformed(ActionEvent e) {
 		Student student = pCenter.getStudent();
-		service.modifyScores(student);
-		table.loadData("");
+		if(student !=null) {
+			service.modifyScores(student);
+			table.loadData("");
+			setVisible(false);
+		}
 	}
 
 	public void setvalue(Student student) {
@@ -89,4 +97,7 @@ public class scoManag extends JFrame implements ActionListener {
 		this.table = scoTablePanel;
 	}
 
+	protected void do_btnClear_actionPerformed(ActionEvent e) {
+		pCenter.clearTf();
+	}
 }
