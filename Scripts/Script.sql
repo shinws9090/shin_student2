@@ -24,6 +24,16 @@ select s.stdno, s.name, s.dirth, s.social, dayTimeno, dayTimename, deptno, deptn
 	join subjects j on s2.subjectno = j.subjectno 
 	group by s.stdno;
 
+-- 수정
+
+select s.stdno, s.name, s.dirth, s.social, dayTimeno, dayTimename, deptno, deptname, grade, atdno, atdname, miltno, miltname,pic
+	from students s
+	join days d on s.dayTime =d.dayTimeno 
+	join department d2 on s.dept = d2.deptno 
+	join attendings a on s.atd = a.atdno 
+	join militarys m on s.milt =m.miltno; 
+	group by s.stdno;
+
 
 select stdno ,
 	max(if(s2.subjectno=1,score,null)),
@@ -45,7 +55,7 @@ select * from studentAll;
 
 -- 뷰
 create view studentallRank
-as
+as;
 select s.*,rank,ranksco
 from studentall s ,ranking r 
 where s.avg between r.lowsco and r.hisco ;
@@ -117,6 +127,24 @@ from manageruser
 where id = 'shinws9090' and pass = password('1234');
 
 
+-- 
+select * from scores s2 ;
+insert into scores values (17010012,4,100);
+insert into subjects values(4,'4과목');
+
+select stdno, s.subjectno, score, subjectname
+from scores s join subjects s2 on s.subjectno = s2.subjectno 
+where stdno = ?;
+
+select * from ranking
+	where 90 between lowsco and hisco;
+
+select * from ranking;
+
+select atdno, atdname from attendings;
+select dayTimeno, dayTimename from days d ;
+select deptno, deptname from department d ;
+select miltno, miltname from militarys m ;
 
 
 	

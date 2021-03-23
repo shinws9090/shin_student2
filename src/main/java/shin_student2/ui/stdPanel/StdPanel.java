@@ -87,7 +87,6 @@ public class StdPanel extends JPanel implements ActionListener{
 		}
 		pStdTable.loadData(where);
 		
-		
 	}
 
 	

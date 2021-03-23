@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 import shin_student2.dto.Attendings;
 import shin_student2.dto.Days;
 import shin_student2.dto.Department;
 import shin_student2.dto.Militarys;
+import shin_student2.dto.Rank;
 import shin_student2.util.JdbcUtil;
 
 public class ComboBoxList {
@@ -38,6 +38,27 @@ public class ComboBoxList {
 				} while (rs.next());
 				
 				return Arrays.stream(combolist.toArray()).distinct().sorted().toArray();
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public List<Rank> RankComboBox() {
+		String a = "select rank, ranksco  from ranking";
+		try (Connection con = JdbcUtil.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(a);
+				ResultSet rs = pstmt.executeQuery()) {
+
+			if (rs.next()) {
+				List<Rank> list = new ArrayList<Rank>();
+				list.add(new Rank());
+				do {
+					list.add(new Rank(rs.getString("rank"),rs.getInt("ranksco")));
+				} while (rs.next());
+				
+				return list;
 			}
 
 		} catch (SQLException e) {

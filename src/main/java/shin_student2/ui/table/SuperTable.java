@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.util.Comparator;
 import java.util.List;
 
@@ -23,14 +24,29 @@ import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import shin_student2.dto.Department;
 import shin_student2.dto.Student;
+import shin_student2.service.ComboBoxList;
 import shin_student2.ui.exception.NotSelectedException;
+import shin_student2.ui.stdPanel.pop.manag.DeptManag;
+import shin_student2.ui.stdPanel.pop.manag.SuperManagPanel;
 
-public abstract class SuperTable extends JPanel implements ActionListener{
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+
+public abstract class SuperTable<T> extends JPanel implements ActionListener{
 	protected JTable table;
-	protected List<Student> list;
+	protected List<T> list;
 	protected JMenuItem update;
 	protected JMenuItem delete;
+	protected SuperManagPanel<T> pConfirm;
+	ComboBoxList service = ComboBoxList.getInstance();
+	
+	
+	
+	public void setpConfirm(SuperManagPanel<T> pConfirm) {
+		this.pConfirm = pConfirm;
+	}
 	
 	
 	public SuperTable() {
@@ -51,6 +67,7 @@ public abstract class SuperTable extends JPanel implements ActionListener{
 		add(scrollPane, BorderLayout.CENTER);
 
 		table = new JTable();
+		table.addMouseListener(tableMouseClicked());
 		scrollPane.setViewportView(table);
 		
 		JPopupMenu popup= new JPopupMenu();
@@ -62,18 +79,12 @@ public abstract class SuperTable extends JPanel implements ActionListener{
 		popup.add(update);
 		popup.add(delete);
 	}
+	public abstract MouseAdapter tableMouseClicked();
 
 
-	public abstract String[] getColumnNames();
+	public abstract Object[] getColumnNames();
 	
-	public Student getItem() {
-		int idx = table.getSelectedRow();
-		int stdno = (int) table.getValueAt(idx, 0);
-		if(idx == -1) {
-			throw new NotSelectedException();
-		}
-		return list.get(list.indexOf(new Student(stdno)));
-	}
+	public abstract T getItem();
 	
 	public void setList() {
 		Object[][] data = null;
@@ -106,7 +117,7 @@ public abstract class SuperTable extends JPanel implements ActionListener{
 
 	protected abstract void setTebleModelMode();
 
-	public abstract Object[] toArray(Student s);
+	public abstract Object[] toArray(T t);
 
 	public void setTableCellcondition(int... idx) {
 		TableColumnModel tcm = table.getColumnModel();
@@ -155,7 +166,8 @@ public abstract class SuperTable extends JPanel implements ActionListener{
 				int row, int column) {
 			setText(value == null ? "" : value.toString());
 			setOpaque(true);
-			String rank = (String) table.getValueAt(row, 8);
+			System.out.println(table.getColumnCount()-1);
+			String rank = (String) table.getValueAt(row, table.getColumnCount()-2);
 			if (rank.equals("F")) {
 				setBackground(Color.RED);
 			} else {
@@ -172,4 +184,6 @@ public abstract class SuperTable extends JPanel implements ActionListener{
 			return super.getComparator(column);
 		}
 	}
+
+	
 }

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import shin_student2.dto.Department;
+import shin_student2.dto.Rank;
 import shin_student2.dto.Student;
 import shin_student2.service.StudentService;
 import shin_student2.ui.table.ScoTablePanel;
@@ -76,7 +77,7 @@ public class ScoPanel extends JPanel implements ActionListener{
 				if (where.equals("where ")) {} else {where += " and ";}
 				where += ("grade = " + std.getGrade());
 			}
-			if (std.getRank().equals("")){}else {
+			if (std.getRank() instanceof Rank){}else {
 				if (where.equals("where ")) {} else {where += " and ";}
 				where += ("rank = " + "'" + std.getRank() + "'");
 			}

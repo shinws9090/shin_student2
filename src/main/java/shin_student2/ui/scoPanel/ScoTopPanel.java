@@ -1,22 +1,19 @@
 package shin_student2.ui.scoPanel;
 
-import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.util.Vector;
 
-import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import shin_student2.dto.Attendings;
-import shin_student2.dto.Days;
 import shin_student2.dto.Department;
-import shin_student2.dto.Militarys;
+import shin_student2.dto.Rank;
 import shin_student2.dto.Student;
 import shin_student2.service.ComboBoxList;
-
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
 
 public class ScoTopPanel extends JPanel {
 	private JTextField tfName;
@@ -55,7 +52,7 @@ public class ScoTopPanel extends JPanel {
 		lblRank.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblRank);
 
-		cbRank = new JComboBox<>(listService.ComboListSelect("ranking", "rank"));
+		cbRank = new JComboBox<>(new Vector<Rank>(listService.RankComboBox()));
 		add(cbRank);
 
 		JLabel lblName = new JLabel("성명");
@@ -84,7 +81,7 @@ public class ScoTopPanel extends JPanel {
 		if ((String) cbGrade.getSelectedItem() != "")
 			grade = Integer.parseInt((String) cbGrade.getSelectedItem());
 		
-		String rank = (String) cbRank.getSelectedItem();
+		Rank rank = (Rank) cbRank.getSelectedItem();
 		
 		return new Student(name, deptno, grade, rank);
 	}

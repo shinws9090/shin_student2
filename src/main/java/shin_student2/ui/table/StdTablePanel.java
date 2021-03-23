@@ -1,6 +1,7 @@
 package shin_student2.ui.table;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -10,7 +11,7 @@ import shin_student2.service.StudentService;
 import shin_student2.ui.stdManagFrame;
 import shin_student2.ui.exception.NotSelectedException;
 
-public class StdTablePanel extends SuperTable {
+public class StdTablePanel extends SuperTable<Student> {
 	private StudentService service;
 
 	public StdTablePanel() {
@@ -62,6 +63,22 @@ public class StdTablePanel extends SuperTable {
 		}catch(NotSelectedException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 		}
+	}
+	
+	@Override
+	public Student getItem() {
+		int idx = table.getSelectedRow();
+		int stdno = (int) table.getValueAt(idx, 0);
+		if(idx == -1) {
+			throw new NotSelectedException();
+		}
+		return list.get(list.indexOf(new Student(stdno)));
+	}
+
+	@Override
+	public MouseAdapter tableMouseClicked() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

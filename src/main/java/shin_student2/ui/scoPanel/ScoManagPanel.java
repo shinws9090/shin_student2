@@ -21,6 +21,7 @@ public class ScoManagPanel extends JPanel {
 	private JTextField tfSub3;
 	private JTextField tfName;
 	private Student student;
+	private JTextField tfSub4;
 
 	/**
 	 * Create the panel.
@@ -32,9 +33,8 @@ public class ScoManagPanel extends JPanel {
 		tfGrade.setEditable(false);
 		tfNo.setEditable(false);
 		tfName.setEditable(false);
-
-		JLabel label = new JLabel("");
-		add(label);
+		
+		
 	}
 
 	private void initialize() {
@@ -89,6 +89,13 @@ public class ScoManagPanel extends JPanel {
 		tfName = new JTextField();
 		tfName.setColumns(10);
 		add(tfName);
+		
+		JLabel lblSub4 = new JLabel("4과목 : ");
+		add(lblSub4);
+		
+		tfSub4 = new JTextField();
+		tfSub4.setColumns(6);
+		add(tfSub4);
 
 	}
 
@@ -100,6 +107,7 @@ public class ScoManagPanel extends JPanel {
 			student.getScores().get(0).setScoer(Integer.parseInt(tfSub1.getText()));
 			student.getScores().get(1).setScoer(Integer.parseInt(tfSub2.getText()));
 			student.getScores().get(2).setScoer(Integer.parseInt(tfSub3.getText()));
+			student.getScores().get(3).setScoer(Integer.parseInt(tfSub4.getText()));
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "성적이 이상함다");
 			return null;
@@ -111,12 +119,14 @@ public class ScoManagPanel extends JPanel {
 		this.student = student;
 		
 		tfDept.setText(student.getDeptno().getDeptname());
-		tfSub1.setText(student.getScores().get(0).getScoer() + "");
 		tfGrade.setText(student.getGrade() + "");
-		tfSub2.setText(student.getScores().get(1).getScoer() + "");
 		tfNo.setText(student.getNo() + "");
-		tfSub3.setText(student.getScores().get(2).getScoer() + "");
 		tfName.setText(student.getName());
+		
+		tfSub1.setText(student.getScores().get(0).getScoer() + "");
+		tfSub2.setText(student.getScores().get(1).getScoer() + "");
+		tfSub3.setText(student.getScores().get(2).getScoer() + "");
+		tfSub4.setText(student.getScores().get(3).getScoer() + "");
 
 	}
 
@@ -124,6 +134,7 @@ public class ScoManagPanel extends JPanel {
 		tfSub1.setText("");
 		tfSub2.setText("");
 		tfSub3.setText("");
+		tfSub4.setText("");
 
 	}
 

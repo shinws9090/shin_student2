@@ -14,21 +14,16 @@ public class Student {
 	private Attendings atdno;
 	private Militarys miltno;
 	private List<Score> scores;
-	
-	
-	private int total;
-	private double avg;
-	private String rank;
-	private double ranksco;
+
+	private Rank rank;
 	private String pic;
-	
-	
+
 	public Student() {
 		super();
 	}
-	
+
 	public Student(int no, String name, Date birthday, int social, Days dayno, Department deptno, int grade,
-			Attendings atdno, Militarys miltno , String pic) {
+			Attendings atdno, Militarys miltno, String pic) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -42,7 +37,7 @@ public class Student {
 		this.pic = pic;
 	}
 
-	public Student(String name, Department deptno, int grade, String rank) {
+	public Student(String name, Department deptno, int grade, Rank rank) {
 		super();
 		this.name = name;
 		this.deptno = deptno;
@@ -61,8 +56,7 @@ public class Student {
 	}
 
 	public Student(int no, String name, Date birthday, int social, Days dayno, Department deptno, int grade,
-			Attendings atdno, Militarys miltno, List<Score> scores, int total, double avg, String rank,
-			double ranksco, String pic) {
+			Attendings atdno, Militarys miltno, List<Score> scores, Rank rank, double ranksco, String pic) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -74,14 +68,9 @@ public class Student {
 		this.atdno = atdno;
 		this.miltno = miltno;
 		this.scores = scores;
-		this.total = total;
-		this.avg = avg;
 		this.rank = rank;
-		this.ranksco = ranksco;
 		this.pic = pic;
 	}
-
-	
 
 	public Student(int no) {
 		super();
@@ -97,36 +86,42 @@ public class Student {
 	}
 
 	public int getTotal() {
-		return total;
+		int total = 0;
+			for(Score s :scores) {
+				total +=s.getScoer();
+			}
+		return total<0?-1:total;
 	}
 
-	public void setTotal(int total) {
-		this.total = total;
-	}
+	
 
 	public double getAvg() {
+		int idx = 0;
+		for(int i = 0; i<scores.size();i++) {
+			if(scores.get(i).getScoer()==-1) {
+				idx +=1;
+			}
+			if(idx==scores.size()) {
+				idx--;
+			}
+		}
+		double avg = getTotal()/(scores.size()-idx);
+		if(avg<0) avg=0;
+		
 		return avg;
 	}
 
-	public void setAvg(double avg) {
-		this.avg = avg;
-	}
+	
 
-	public String getRank() {
+	public Rank getRank() {
 		return rank;
 	}
 
-	public void setRank(String rank) {
+	public void setRank(Rank rank) {
 		this.rank = rank;
 	}
 
-	public double getRanksco() {
-		return ranksco;
-	}
-
-	public void setRanksco(double ranksco) {
-		this.ranksco = ranksco;
-	}
+	
 
 	public int getNo() {
 		return no;
@@ -212,7 +207,7 @@ public class Student {
 	public String toString() {
 		return String.format(
 				"Student [no=%s, name=%s, birthday=%s, social=%s, dayno=%s, deptno=%s, grade=%s, atdno=%s, miltno=%s, scores=%s, pic = %s]%n",
-				no, name, birthday, social, dayno, deptno, grade, atdno, miltno, scores,pic);
+				no, name, birthday, social, dayno, deptno, grade, atdno, miltno, scores, pic);
 	}
 //	@Override
 //	public String toString() {

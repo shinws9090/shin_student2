@@ -75,7 +75,7 @@ public class StudentDaoImpl implements StudentDao {
 			stdPstmt.setString(10, s.getPic());
 			stdPstmt.executeUpdate();
 
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 4; i++) {
 				scoPstmt.setInt(1, s.getNo());
 				scoPstmt.setInt(2, i + 1);
 				scoPstmt.executeUpdate();
