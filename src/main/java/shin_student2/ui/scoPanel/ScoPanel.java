@@ -12,7 +12,6 @@ import shin_student2.dto.Rank;
 import shin_student2.dto.Student;
 import shin_student2.service.StudentService;
 import shin_student2.ui.table.ScoTablePanel;
-import javax.swing.BoxLayout;
 import javax.swing.border.EmptyBorder;
 
 public class ScoPanel extends JPanel implements ActionListener{
@@ -62,25 +61,31 @@ public class ScoPanel extends JPanel implements ActionListener{
 	
 	protected void do_btnSearch_actionPerformed(ActionEvent arg0) {
 		Student std = pTopSearch.getStudent();
+		System.out.println(std.getRank());
 		String where = "";
 		if (std instanceof Student) {
 			where = "where ";
+			
 			if (std.getName().equals("")){}else {
 				if (where.equals("where ")) {} else {where += " and ";}
 				where += ("name = " + "'" + std.getName() + "'");
 			}
+			
 			if (std.getDeptno() instanceof Department) {
 				if (where.equals("where ")) {} else {where += " and ";}
 				where += ("deptno = " + std.getDeptno().getDeptno());
 			}
+			
 			if (std.getGrade() != 0) {
 				if (where.equals("where ")) {} else {where += " and ";}
 				where += ("grade = " + std.getGrade());
 			}
-			if (std.getRank() instanceof Rank){}else {
-				if (where.equals("where ")) {} else {where += " and ";}
-				where += ("rank = " + "'" + std.getRank() + "'");
-			}
+			
+//			if (std.getRank().getRank().equals("")){}else {
+//				if (where.equals("where ")) {} else {where += " and ";}
+//				System.out.println("aaaaaaaaaaaaaaaaaaaaaaa");
+//				where += ("rank = " + "'" + std.getRank().getRank() + "'");
+//			}
 
 		}
 		pScoTable.loadData(where);

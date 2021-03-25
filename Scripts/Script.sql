@@ -146,5 +146,7 @@ select dayTimeno, dayTimename from days d ;
 select deptno, deptname from department d ;
 select miltno, miltname from militarys m ;
 
-
+select s.stdno,score
+	from students s join scores s2 on s.stdno= s2.stdno 
+	group by s.stdno;
 	

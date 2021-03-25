@@ -20,7 +20,6 @@ public class ScoTopPanel extends JPanel {
 	private ComboBoxList listService = ComboBoxList.getInstance();
 	private JComboBox cbDept;
 	private JComboBox cbGrade;
-	private JComboBox cbRank;
 
 	/**
 	 * Create the panel.
@@ -48,13 +47,6 @@ public class ScoTopPanel extends JPanel {
 		cbGrade = new JComboBox<>(listService.ComboListSelect("students", "grade"));
 		add(cbGrade);
 
-		JLabel lblRank = new JLabel("등급");
-		lblRank.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblRank);
-
-		cbRank = new JComboBox<>(new Vector<Rank>(listService.RankComboBox()));
-		add(cbRank);
-
 		JLabel lblName = new JLabel("성명");
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblName);
@@ -65,7 +57,7 @@ public class ScoTopPanel extends JPanel {
 	}
 
 	public Student getStudent() {
-		int idx = cbDept.getSelectedIndex() + cbGrade.getSelectedIndex() + cbRank.getSelectedIndex()
+		int idx = cbDept.getSelectedIndex() + cbGrade.getSelectedIndex()
 		+(tfName.getText().equals("")?0:1);
 
 		if (idx <= 0) {
@@ -81,9 +73,7 @@ public class ScoTopPanel extends JPanel {
 		if ((String) cbGrade.getSelectedItem() != "")
 			grade = Integer.parseInt((String) cbGrade.getSelectedItem());
 		
-		Rank rank = (Rank) cbRank.getSelectedItem();
-		
-		return new Student(name, deptno, grade, rank);
+		return new Student(name, deptno, grade, null);
 	}
 
 }
