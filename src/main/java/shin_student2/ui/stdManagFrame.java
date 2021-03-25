@@ -46,6 +46,7 @@ public class stdManagFrame extends JFrame implements ActionListener {
 		initialize();
 	}
 	private void initialize() {
+		setTitle("학생 관리프로그램");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 454, 401);
 		contentPane = new JPanel();

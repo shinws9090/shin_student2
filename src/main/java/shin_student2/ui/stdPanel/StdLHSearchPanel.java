@@ -29,6 +29,7 @@ import shin_student2.ui.stdPanel.pop.AttendingsPop;
 import shin_student2.ui.stdPanel.pop.DaysPop;
 import shin_student2.ui.stdPanel.pop.DeptPop;
 import shin_student2.ui.stdPanel.pop.MiliterysPop;
+import shin_student2.ui.stdPanel.pop.SuperPop;
 
 public class StdLHSearchPanel extends JPanel {
 	private JComboBox<Days> cbDayTime;
@@ -42,15 +43,15 @@ public class StdLHSearchPanel extends JPanel {
 	private JLabel lblDept;
 	private JPopupMenu popupMenu;
 	private JMenu mnDept;
-	private DeptPop panel;
 	private JMenu mnDays;
 	private JMenu mnAtd;
 	private JMenu mnMit;
 	private JLabel lblNewLabel;
 	private JSeparator separator;
-	private DaysPop panel_1;
-	private MiliterysPop panel_2;
-	private AttendingsPop panel_3;
+	private SuperPop<Department> panel;
+	private SuperPop<Days> panel_1;
+	private SuperPop<Militarys> panel_2;
+	private SuperPop<Attendings> panel_3;
 	public JComboBox getCbDayTime() {
 		return cbDayTime;
 	}

@@ -41,6 +41,7 @@ public class NewIDFrame extends JFrame implements ActionListener {
 	private JPanel p2;
 
 	public NewIDFrame() {
+		setTitle("학생 관리프로그램");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 304);
 		contentPane = new JPanel();

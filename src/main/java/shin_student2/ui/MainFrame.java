@@ -52,6 +52,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	
 	public MainFrame() {
+		setTitle("학생 관리프로그램");
 		service = new IDService();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="shin_student2.dto.Subject" project="shin_student2" 
     file="/shin_student2/src/main/java/shin_student2/dto/Subject.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="78" y="1042"/>    
+    <position height="-1" width="-1" x="48" y="574"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="shin_student2.dto.Days" project="shin_student2" 
     file="/shin_student2/src/main/java/shin_student2/dto/Days.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="297" width="138" x="-172" y="717"/>    
+    <position height="-1" width="-1" x="1061" y="658"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="shin_student2.dto.Score" project="shin_student2" 
     file="/shin_student2/src/main/java/shin_student2/dto/Score.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="144" x="6" y="717"/>    
+    <position height="-1" width="-1" x="49" y="279"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="shin_student2.dto.Department" project="shin_student2" 
     file="/shin_student2/src/main/java/shin_student2/dto/Department.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="279" width="148" x="190" y="717"/>    
+    <position height="-1" width="-1" x="870" y="654"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="shin_student2.dto.Student" project="shin_student2" 
     file="/shin_student2/src/main/java/shin_student2/dto/Student.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="493" width="556" x="146" y="184"/>    
+    <position height="493" width="556" x="179" y="182"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="shin_student2.dto.Attendings" project="shin_student2" 
     file="/shin_student2/src/main/java/shin_student2/dto/Attendings.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="279" width="146" x="378" y="717"/>    
+    <position height="-1" width="-1" x="1055" y="324"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="shin_student2.dto.Militarys" project="shin_student2" 
     file="/shin_student2/src/main/java/shin_student2/dto/Militarys.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="279" width="138" x="564" y="717"/>    
+    <position height="-1" width="-1" x="869" y="322"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -65,49 +65,77 @@
     </display>  
   </class>  
   <association id="8">    
+    <bendpoint x="752" y="485"/>    
+    <bendpoint x="1052" y="484"/>    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="9" name="scores"/>      
-      <multiplicity id="10" minimum="0" maximum="2147483647"/>    
+      <attribute id="9" name="dayno">        
+        <position height="0" width="0" x="1164" y="-207"/>      
+      </attribute>      
+      <multiplicity id="10" minimum="0" maximum="1">        
+        <position height="0" width="0" x="1164" y="-207"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="11">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="12" name="deptno"/>      
-      <multiplicity id="13" minimum="0" maximum="1"/>    
+      <attribute id="12" name="deptno">        
+        <position height="0" width="0" x="606" y="-202"/>      
+      </attribute>      
+      <multiplicity id="13" minimum="0" maximum="1">        
+        <position height="0" width="0" x="606" y="-202"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="14">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="15" name="atdno"/>      
-      <multiplicity id="16" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="17">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="18" name="miltno"/>      
-      <multiplicity id="19" minimum="0" maximum="1"/>    
+      <attribute id="15" name="miltno">        
+        <position height="0" width="0" x="236" y="-534"/>      
+      </attribute>      
+      <multiplicity id="16" minimum="0" maximum="1">        
+        <position height="0" width="0" x="236" y="-534"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="20">    
+  <association id="17">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="21" name="dayno"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
+      <attribute id="18" name="scores">        
+        <position height="0" width="0" x="-29" y="-532"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-29" y="-532"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <bendpoint x="768" y="176"/>    
+    <bendpoint x="1052" y="142"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="21" name="atdno">        
+        <position height="0" width="0" x="604" y="-532"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="0" width="0" x="604" y="-532"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="23">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="24" name="subject"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
+      <attribute id="24" name="subject">        
+        <position height="0" width="0" x="-30" y="-468"/>      
+      </attribute>      
+      <multiplicity id="25" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-30" y="-468"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
