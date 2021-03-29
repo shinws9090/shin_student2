@@ -68,10 +68,10 @@ public class StdTablePanel extends SuperTable<Student> {
 	@Override
 	public Student getItem() {
 		int idx = table.getSelectedRow();
-		int stdno = (int) table.getValueAt(idx, 0);
 		if(idx == -1) {
 			throw new NotSelectedException();
 		}
+		int stdno = (int) table.getValueAt(idx, 0);
 		return list.get(list.indexOf(new Student(stdno)));
 	}
 

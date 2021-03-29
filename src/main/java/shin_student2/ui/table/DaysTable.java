@@ -41,10 +41,10 @@ public class DaysTable extends SuperTable<Days> {
 	@Override
 	public Days getItem() {
 		int idx = table.getSelectedRow();
-		int no = (int) table.getValueAt(idx, 0);
 		if (idx == -1) {
 			throw new NotSelectedException();
 		}
+		int no = (int) table.getValueAt(idx, 0);
 		return list.get(list.indexOf(new Days(no)));
 	}
 

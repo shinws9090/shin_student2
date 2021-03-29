@@ -19,6 +19,10 @@ public class StdPanel extends JPanel implements ActionListener{
 	private StdTablePanel pStdTable;
 	private StudentService service = StudentService.getInstance();
 
+
+	public StdTablePanel getpStdTable() {
+		return pStdTable;
+	}
 	/**
 	 * Create the panel.
 	 */

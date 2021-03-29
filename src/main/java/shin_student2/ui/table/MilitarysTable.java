@@ -41,10 +41,10 @@ public class MilitarysTable extends SuperTable<Militarys> {
 	@Override
 	public Militarys getItem() {
 		int idx = table.getSelectedRow();
-		String no = (String) table.getValueAt(idx, 0);
 		if (idx == -1) {
 			throw new NotSelectedException();
 		}
+		String no = (String) table.getValueAt(idx, 0);
 		return list.get(list.indexOf(new Militarys(no)));
 	}
 

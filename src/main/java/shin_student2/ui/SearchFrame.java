@@ -10,12 +10,15 @@ import javax.swing.border.EmptyBorder;
 
 import shin_student2.ui.scoPanel.ScoPanel;
 import shin_student2.ui.stdPanel.StdPanel;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
-public class SearchFrame extends JFrame {
+public class SearchFrame extends JFrame implements ChangeListener {
 
 	private JPanel contentPane;
 	private StdPanel pStdManag;
 	private ScoPanel pScoManag;
+	private JTabbedPane tabbedPane;
 	
 
 	public SearchFrame() {
@@ -32,7 +35,8 @@ public class SearchFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.addChangeListener(this);
 		tabbedPane.setEnabled(true);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 
@@ -53,4 +57,15 @@ public class SearchFrame extends JFrame {
 	
 
 	
+	public void stateChanged(ChangeEvent e) {
+		if (e.getSource() == tabbedPane) {
+			do_tabbedPane_stateChanged(e);
+		}
+	}
+	protected void do_tabbedPane_stateChanged(ChangeEvent e) {
+		if(pStdManag!=null&&pScoManag!=null) {
+		pStdManag.getpStdTable().loadData("");
+		pScoManag.getpScoTable().loadData("");
+		}
+	}
 }

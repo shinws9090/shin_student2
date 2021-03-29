@@ -51,7 +51,7 @@ public class StudentDaoImpl implements StudentDao {
 		// stdno, name, dirth, social, dayTime, dept, grade, atd, milt
 
 		String stdSql = "insert into students values (?,?,?,?,?,?,?,?,?,?)";
-		String scoSql = "insert into scores values(?,?,0)";
+		String scoSql = "insert into scores values(?,?,-1)";
 		String res = "";
 		Connection con = null;
 		PreparedStatement stdPstmt = null;

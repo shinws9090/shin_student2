@@ -22,6 +22,9 @@ public class ScoPanel extends JPanel implements ActionListener{
 	private StudentService service = StudentService.getInstance();
 
 
+	public ScoTablePanel getpScoTable() {
+		return pScoTable;
+	}
 	/**
 	 * Create the panel.
 	 */
