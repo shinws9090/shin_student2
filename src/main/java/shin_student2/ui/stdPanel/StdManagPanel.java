@@ -202,7 +202,7 @@ public class StdManagPanel extends JPanel implements ActionListener {
 			str = "여";
 		}
 		cbSocial.setSelectedItem(str);
-		// 객체가 달라서 안되는듯
+		
 		cbMilt.setSelectedItem(std.getMiltno());
 		cbAtd.setSelectedItem(std.getAtdno());
 

@@ -61,7 +61,6 @@ public class ScoPanel extends JPanel implements ActionListener{
 	
 	protected void do_btnSearch_actionPerformed(ActionEvent arg0) {
 		Student std = pTopSearch.getStudent();
-		System.out.println(std.getRank());
 		String where = "";
 		if (std instanceof Student) {
 			where = "where ";
