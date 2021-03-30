@@ -1,5 +1,6 @@
 
-
+select * from manageruser ;
+select ID, `grant` from manageruser;
 
 
 create view studentAll

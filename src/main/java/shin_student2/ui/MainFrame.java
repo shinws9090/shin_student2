@@ -23,6 +23,7 @@ import javax.swing.event.DocumentListener;
 import shin_student2.dto.ID;
 import shin_student2.service.IDService;
 import javax.swing.JPasswordField;
+import java.awt.Insets;
 
 public class MainFrame extends JFrame implements ActionListener {
 
@@ -52,44 +53,47 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	
 	public MainFrame() {
+		initialize();
+	}
+	private void initialize() {
 		setTitle("학생 관리프로그램");
 		service = new IDService();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 216);
+		setBounds(100, 100, 451, 242);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-
-		JLabel lblTitle = new JLabel("학생관리 프로그램 로그인");
+		
+				JLabel lblTitle = new JLabel("학생관리 프로그램 로그인");
 		lblTitle.setForeground(SystemColor.window);
 		lblTitle.setOpaque(true);
 		lblTitle.setBackground(SystemColor.activeCaption);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("굴림", Font.BOLD, 25));
 		contentPane.add(lblTitle, BorderLayout.NORTH);
-
-		JPanel pCenter = new JPanel();
+		
+				JPanel pCenter = new JPanel();
 		pCenter.setBackground(SystemColor.window);
 		pCenter.setBorder(new EmptyBorder(20, 50, 20, 50));
 		contentPane.add(pCenter, BorderLayout.CENTER);
 		pCenter.setLayout(new GridLayout(0, 2, 10, 10));
-
-		JLabel lblID = new JLabel("아이디");
+		
+				JLabel lblID = new JLabel("아이디");
 		lblID.setHorizontalAlignment(SwingConstants.CENTER);
 		pCenter.add(lblID);
-
-		tfID = new JTextField();
+		
+				tfID = new JTextField();
 		pCenter.add(tfID);
 		tfID.setColumns(10);
 		tfID.getDocument().addDocumentListener(listener);
-
-		JLabel lblPass = new JLabel("비밀번호");
+		
+				JLabel lblPass = new JLabel("비밀번호");
 		lblPass.setHorizontalAlignment(SwingConstants.CENTER);
 		pCenter.add(lblPass);
-
-		tfPass = new JPasswordField();
+		
+				tfPass = new JPasswordField();
 		tfPass.setEchoChar('뀨');
 		pCenter.add(tfPass);
 		tfPass.getDocument().addDocumentListener(listener);
@@ -98,12 +102,23 @@ public class MainFrame extends JFrame implements ActionListener {
 		btnNewID.addActionListener(this);
 		btnNewID.setBackground(Color.WHITE);
 		pCenter.add(btnNewID);
-
-		btnRogin = new JButton("로그인");
+		
+				btnRogin = new JButton("로그인");
 		btnRogin.addActionListener(this);
 		btnRogin.setBackground(Color.WHITE);
 		btnRogin.setEnabled(false);
 		pCenter.add(btnRogin);
+		
+		panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		contentPane.add(panel, BorderLayout.SOUTH);
+		panel.setLayout(new BorderLayout(0, 0));
+		
+		btnNewButton = new JButton("ROOT관리자");
+		btnNewButton.addActionListener(this);
+		btnNewButton.setMargin(new Insets(0, 0, 0, 0));
+		btnNewButton.setBackground(Color.WHITE);
+		panel.add(btnNewButton, BorderLayout.EAST);
 	}
 	
 	public ID getItem(){
@@ -153,6 +168,9 @@ public class MainFrame extends JFrame implements ActionListener {
 	
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnNewButton) {
+			do_btnNewButton_actionPerformed(e);
+		}
 		if (e.getSource() == btnNewID) {
 			do_btnNewID_actionPerformed(e);
 		}
@@ -178,8 +196,14 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	
 	NewIDFrame frame = new NewIDFrame();
+	private JPanel panel;
+	private JButton btnNewButton;
 	protected void do_btnNewID_actionPerformed(ActionEvent e) {
 		frame.setService(service);
+		frame.setVisible(true);
+	}
+	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
+		Root frame = new Root();
 		frame.setVisible(true);
 	}
 }

@@ -108,7 +108,7 @@ public abstract class SuperTable<T> extends JPanel implements ActionListener{
 //		setTableCellAlign(SwingConstants.CENTER, 0, 1);
 //		setTableCellAlign(SwingConstants.RIGHT, 2, 3, 4, 5, 6);
 //		// 컬럼별 간격 조정
-////				setTableCellWidth(100,100,80,80,80,80,100); 10개
+//				setTableCellWidth(100,100,80,80,80,80,100); 10개
 //
 //		// 조건별 행 색깔 변경
 //		setTableCellcondition(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);

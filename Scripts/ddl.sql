@@ -133,8 +133,11 @@ CREATE TABLE `student2`.`ManagerUser` (
 	`ID`    VARCHAR(20) NOT NULL COMMENT '아이디', -- 아이디
 	`pass`  CHAR(41)    NULL     COMMENT '비밀번호', -- 비밀번호
 	`email` CHAR(50)    NULL     COMMENT '이메일' -- 이메일
+	`grant` bool        NULL     COMMENT '권한' -- 권한
 )
 COMMENT '관리자ID';
+
+
 
 -- 관리자ID
 ALTER TABLE `student2`.`ManagerUser`
