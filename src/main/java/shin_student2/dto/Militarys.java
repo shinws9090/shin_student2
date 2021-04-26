@@ -9,6 +9,7 @@ public class Militarys {
 		super();
 		this.miltno = miltno;
 	}
+
 	public Militarys(String miltno, String military) {
 		super();
 		this.miltno = miltno;

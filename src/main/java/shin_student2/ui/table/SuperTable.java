@@ -97,6 +97,7 @@ public abstract class SuperTable<T> extends JPanel implements ActionListener{
 			data = new Object[0][];
 			JOptionPane.showMessageDialog(null,"검색결과가 없습니다.");
 		}
+
 		CustomTableModel model = new CustomTableModel(data, getColumnNames());
 		table.setModel(model);
 		
@@ -180,7 +181,6 @@ public abstract class SuperTable<T> extends JPanel implements ActionListener{
 	class CumtomTableRowSorter extends TableRowSorter<TableModel> {
 		@Override
 		public Comparator<?> getComparator(int column) {
-			// TODO Auto-generated method stub
 			return super.getComparator(column);
 		}
 	}

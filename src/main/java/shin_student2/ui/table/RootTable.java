@@ -3,6 +3,8 @@ package shin_student2.ui.table;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 
+import javax.swing.SwingConstants;
+
 import shin_student2.dto.ID;
 import shin_student2.service.IDService;
 import shin_student2.ui.exception.NotSelectedException;
@@ -50,12 +52,12 @@ public class RootTable extends SuperTable<ID> {
 
 	@Override
 	protected void setTebleModelMode() {
-		
+		setTableCellAlign(SwingConstants.CENTER, 0,1);
 	}
 
 	@Override
 	public Object[] toArray(ID t) {
-		return new Object[] { t.getId(), t.isGrant() };
+		return new Object[] { t.getId(), t.isGrant()?"O":"X" };
 	}
 
 }

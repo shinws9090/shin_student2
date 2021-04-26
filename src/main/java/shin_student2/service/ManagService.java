@@ -1,6 +1,5 @@
 package shin_student2.service;
 
-import shin_student2.dao.ManagDao;
 import shin_student2.dao.Impl.ManagDaoImpl;
 import shin_student2.dto.Attendings;
 import shin_student2.dto.Days;
@@ -8,7 +7,7 @@ import shin_student2.dto.Department;
 import shin_student2.dto.Militarys;
 
 public class ManagService {
-	ManagDao dao = ManagDaoImpl.getInstance();
+	ManagDaoImpl dao = ManagDaoImpl.getInstance();
 
 	public int insertDept(Department department) {
 		return dao.insertDept(department);

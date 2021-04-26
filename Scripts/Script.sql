@@ -113,7 +113,7 @@ select  curdate();
 
 select ID , pass , email 
 from manageruser 
-where id = 'shinws9090' and pass = password('1234');
+where id = '1111' and pass = password('1111');
 
 select * from manageruser m ;
 

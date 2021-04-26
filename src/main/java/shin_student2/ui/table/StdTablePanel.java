@@ -53,6 +53,7 @@ public class StdTablePanel extends SuperTable<Student> {
 			frame.setVisible(true);
 			frame.getBtnInsetAndUpdate().setText("저장");
 			frame.setvalue(student);
+			
 			frame.setTable(this);
 		}
 		if (e.getSource() == delete) {

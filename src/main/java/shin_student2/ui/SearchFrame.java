@@ -100,9 +100,9 @@ public class SearchFrame extends JFrame implements ChangeListener {
 		pStdManag.getpStdTable().loadData("");
 		pScoManag.getpScoTable().loadData("");
 		}
-		setBounds(100, 100, 941, 555);
+		setBounds(getBounds().x, getBounds().y, 941, 555);
 	}
 	protected void codeManagStateChanged(ChangeEvent e) {
-		setBounds(100, 100, 600, 555);
+		setBounds(getBounds().x, getBounds().y, 600, 555);
 	}
 }

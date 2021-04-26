@@ -8,7 +8,7 @@ import shin_student2.dto.ID;
 
 public class IDService {
 	
-	IDDao dao = IDDaoImpl.getInstance();
+	IDDaoImpl dao = IDDaoImpl.getInstance();
 	
 	public boolean selectId(ID id) {
 		return dao.selectId(id);
