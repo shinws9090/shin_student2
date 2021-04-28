@@ -14,12 +14,15 @@ import shin_student2.service.StudentService;
 import shin_student2.ui.table.ScoTablePanel;
 import javax.swing.border.EmptyBorder;
 
+import org.jfree.chart.JFreeChart;
+
 public class ScoPanel extends JPanel implements ActionListener{
 
 	private JButton btnSearch;
 	private ScoTopPanel pTopSearch;
 	private ScoTablePanel pScoTable;
 	private StudentService service = StudentService.getInstance();
+	private ScoChart panel_1;
 
 
 	public ScoTablePanel getpScoTable() {
@@ -31,6 +34,9 @@ public class ScoPanel extends JPanel implements ActionListener{
 	public ScoPanel() {
 
 		initialize();
+		panel_1.setList(pScoTable.getList());
+		JFreeChart chart = panel_1.getchart2();
+		panel_1.getChartPanel().setChart(chart);
 	}
 	private void initialize() {
 		setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -52,6 +58,9 @@ public class ScoPanel extends JPanel implements ActionListener{
 		btnSearch.addActionListener(this);
 		panel.add(btnSearch, BorderLayout.EAST);
 		
+		
+		panel_1 = new ScoChart();
+		add(panel_1, BorderLayout.SOUTH);
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
@@ -91,5 +100,6 @@ public class ScoPanel extends JPanel implements ActionListener{
 
 		}
 		pScoTable.loadData(where);
+		panel_1.setList(pScoTable.getList());
 	}
 }

@@ -91,6 +91,8 @@ public class SearchFrame extends JFrame implements ChangeListener {
 		
 		if (tabbedPane.getSelectedIndex()==2) {
 			codeManagStateChanged(e);
+		}else if(tabbedPane.getSelectedIndex()==1){
+			scoManagStateChanged(e);
 		}else {
 			do_tabbedPane_stateChanged(e);
 		}
@@ -101,6 +103,13 @@ public class SearchFrame extends JFrame implements ChangeListener {
 		pScoManag.getpScoTable().loadData("");
 		}
 		setBounds(getBounds().x, getBounds().y, 941, 555);
+	}
+	protected void scoManagStateChanged(ChangeEvent e) {
+		if(pStdManag!=null&&pScoManag!=null) {
+			pStdManag.getpStdTable().loadData("");
+			pScoManag.getpScoTable().loadData("");
+		}
+		setBounds(getBounds().x, getBounds().y, 941, 900 );
 	}
 	protected void codeManagStateChanged(ChangeEvent e) {
 		setBounds(getBounds().x, getBounds().y, 600, 555);
