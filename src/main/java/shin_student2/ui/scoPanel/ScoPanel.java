@@ -37,7 +37,9 @@ public class ScoPanel extends JPanel implements ActionListener{
 		panel_1.setList(pScoTable.getList());
 		JFreeChart chart = panel_1.getchart2();
 		panel_1.getChartPanel().setChart(chart);
+		pScoTable.setPanel_1(panel_1);
 	}
+	
 	private void initialize() {
 		setBorder(new EmptyBorder(10, 10, 10, 10));
 		setLayout(new BorderLayout(10, 10));

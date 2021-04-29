@@ -14,11 +14,17 @@ import shin_student2.service.ScoreService;
 import shin_student2.service.StudentService;
 import shin_student2.ui.scoManagFrame;
 import shin_student2.ui.exception.NotSelectedException;
+import shin_student2.ui.scoPanel.ScoChart;
 
 public class ScoTablePanel extends SuperTable<Student> {
 	private StudentService service;
 	private ScoreService scoService = ScoreService.getInstance();
+	private ScoChart panel_1;
 	
+	public void setPanel_1(ScoChart panel_1) {
+		this.panel_1 = panel_1;
+	}
+
 	public List<Student> getList(){
 		return super.list;
 	}
@@ -102,6 +108,7 @@ public class ScoTablePanel extends SuperTable<Student> {
 			if (e.getSource() == update) {
 				Student student = getItem();
 				scoManagFrame frame = new scoManagFrame();
+				frame.setPanel_1(panel_1);
 				frame.setVisible(true);
 				frame.getBtnUp().setText("저장");
 				frame.setvalue(student);

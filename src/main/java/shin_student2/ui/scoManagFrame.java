@@ -13,10 +13,13 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
+import org.jfree.chart.JFreeChart;
+
 import shin_student2.dto.Student;
 import shin_student2.service.ScoreService;
 import shin_student2.ui.exception.InvalidCheckException;
 import shin_student2.ui.exception.SqlConstraintException;
+import shin_student2.ui.scoPanel.ScoChart;
 import shin_student2.ui.scoPanel.ScoManagPanel;
 import shin_student2.ui.table.ScoTablePanel;
 
@@ -80,12 +83,20 @@ public class scoManagFrame extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 		}
 	}
+	private ScoChart panel_1;
+	
+	public void setPanel_1(ScoChart panel_1) {
+		this.panel_1 = panel_1;
+	}
 
 	protected void do_btnUp_actionPerformed(ActionEvent e) {
 		Student student = pCenter.getStudent();
 		if(student !=null) {
 			service.modifyScores(student);
 			table.loadData("");
+			panel_1.setList(table.getList());
+			JFreeChart chart = panel_1.getchart2();
+			panel_1.getChartPanel().setChart(chart);
 			setVisible(false);
 		}
 	}
