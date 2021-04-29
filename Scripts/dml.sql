@@ -24,9 +24,10 @@ insert into department values
 	,(3,'산업설비');
 
 insert into subjects values
-	 (1,'1과목')
-	,(2,'2과목')
-	,(3,'3과목');
+	 (1,'국어')
+	,(2,'영어')
+	,(3,'수학');
+
 
 /*
 insert into students values
