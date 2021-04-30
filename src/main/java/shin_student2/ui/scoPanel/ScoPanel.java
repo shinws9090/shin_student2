@@ -114,9 +114,9 @@ public class ScoPanel extends JPanel implements ActionListener{
 						temp.add(lists.get(i));
 					}
 				}
+				pScoTable.loadData2(temp);
 			}
 		}
-		pScoTable.loadData2(temp);
 		
 		panel_1.setList(pScoTable.getList());
 	}
