@@ -229,6 +229,7 @@ public class StdManagPanel extends JPanel implements ActionListener {
 		} else {
 
 			chooserFile = chooser.getSelectedFile();
+			
 			lblPic.setIcon(new ImageIcon(chooserFile.getPath()));
 
 		}

@@ -20,6 +20,7 @@ public class ScoTopPanel extends JPanel {
 	private ComboBoxList listService = ComboBoxList.getInstance();
 	private JComboBox cbDept;
 	private JComboBox cbGrade;
+	private JComboBox cbRank;
 
 	/**
 	 * Create the panel.
@@ -54,10 +55,17 @@ public class ScoTopPanel extends JPanel {
 		tfName = new JTextField();
 		add(tfName);
 		tfName.setColumns(10);
+		
+		JLabel lblRank = new JLabel("등급");
+		lblRank.setHorizontalAlignment(SwingConstants.CENTER);
+		add(lblRank);
+		String[] arr = {"","A","B","C","D","F"};
+		cbRank = new JComboBox<>(arr);
+		add(cbRank);
 	}
 
 	public Student getStudent() {
-		int idx = cbDept.getSelectedIndex() + cbGrade.getSelectedIndex()
+		int idx = cbDept.getSelectedIndex() + cbGrade.getSelectedIndex() + cbRank.getSelectedIndex()
 		+(tfName.getText().equals("")?0:1);
 
 		if (idx <= 0) {
@@ -73,7 +81,9 @@ public class ScoTopPanel extends JPanel {
 		if ((String) cbGrade.getSelectedItem() != "")
 			grade = Integer.parseInt((String) cbGrade.getSelectedItem());
 		
-		return new Student(name, deptno, grade, null);
+		String r = (String) cbRank.getSelectedItem();
+		
+		return new Student(name, deptno, grade, new Rank(r));
 	}
 
 }

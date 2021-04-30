@@ -240,7 +240,13 @@ public class ScoChart extends JPanel implements ActionListener {
 		list.add(value2);
 		list.add(value3);
 		System.out.println(list);
-		JFreeChart chart = getChart(list);
+		JFreeChart chart=null;
+		try{
+			
+		chart = getChart(list);
+		}catch(ArithmeticException e){
+			
+		}
 		return chart;
 	}
 

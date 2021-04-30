@@ -1,20 +1,21 @@
 package shin_student2.ui.scoPanel;
 
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
-
-import shin_student2.dto.Department;
-import shin_student2.dto.Rank;
-import shin_student2.dto.Student;
-import shin_student2.service.StudentService;
-import shin_student2.ui.table.ScoTablePanel;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import org.jfree.chart.JFreeChart;
+
+import shin_student2.dto.Department;
+import shin_student2.dto.Student;
+import shin_student2.service.StudentService;
+import shin_student2.ui.table.ScoTablePanel;
 
 public class ScoPanel extends JPanel implements ActionListener{
 
@@ -77,7 +78,9 @@ public class ScoPanel extends JPanel implements ActionListener{
 		Student std = pTopSearch.getStudent();
 		String where = "";
 		if (std instanceof Student) {
+			if(!std.getName().equals("")&&std.getDeptno() instanceof Department&&std.getGrade() != 0) {
 			where = "where ";
+			}
 			
 			if (std.getName().equals("")){}else {
 				if (where.equals("where ")) {} else {where += " and ";}
@@ -94,14 +97,26 @@ public class ScoPanel extends JPanel implements ActionListener{
 				where += ("grade = " + std.getGrade());
 			}
 			
-//			if (std.getRank().getRank().equals("")){}else {
-//				if (where.equals("where ")) {} else {where += " and ";}
-//				System.out.println("aaaaaaaaaaaaaaaaaaaaaaa");
-//				where += ("rank = " + "'" + std.getRank().getRank() + "'");
-//			}
 
 		}
 		pScoTable.loadData(where);
+		
+		System.out.println(std);
+		List<Student> lists = pScoTable.getList();
+		List<Student> temp = new ArrayList<Student>();
+		System.out.println(lists);
+		String a = std.getRank().getRank();
+		if (!std.getRank().getRank().equals("")){
+			for(int i =0; i<lists.size();i++) {
+				String a2 = lists.get(i).getRank().getRank();
+				System.out.println(a2+"::"+a);
+				if(a2.equals(a)) {
+					temp.add(lists.get(i));
+				}
+			}
+		}
+		pScoTable.loadData2(temp);
+		
 		panel_1.setList(pScoTable.getList());
 	}
 }

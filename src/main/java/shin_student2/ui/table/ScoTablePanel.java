@@ -141,4 +141,9 @@ public class ScoTablePanel extends SuperTable<Student> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public void loadData2(List<Student> list) {
+		super.list=list;
+		setList();
+	}
 }

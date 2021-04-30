@@ -8,8 +8,15 @@ public class Rank {
 	
 	public Rank() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public Rank(String rank) {
+		super();
+		this.rank = rank;
+	}
+
+
 	public Rank(String rank, double ranksco) {
 		super();
 		this.rank = rank;
