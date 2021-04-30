@@ -36,8 +36,11 @@ public class ScoTablePanel extends SuperTable<Student> {
 		list.add("학과");
 		list.add("이름");
 		if (super.list != null)
+			try {
 			for (int i = 0; i < super.list.get(0).getScores().size(); i++) {
 				list.add(super.list.get(0).getScores().get(i).getSubject().getSubName());
+			}}catch(IndexOutOfBoundsException e) {
+				JOptionPane.showMessageDialog(null,"검색결과가 없습니다.");
 			}
 		list.add("총점");
 		list.add("평균");

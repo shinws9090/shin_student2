@@ -100,18 +100,19 @@ public class ScoPanel extends JPanel implements ActionListener{
 
 		}
 		pScoTable.loadData(where);
-		
-		System.out.println(std);
+			
 		List<Student> lists = pScoTable.getList();
-		List<Student> temp = new ArrayList<Student>();
-		System.out.println(lists);
-		String a = std.getRank().getRank();
-		if (!std.getRank().getRank().equals("")){
-			for(int i =0; i<lists.size();i++) {
-				String a2 = lists.get(i).getRank().getRank();
-				System.out.println(a2+"::"+a);
-				if(a2.equals(a)) {
-					temp.add(lists.get(i));
+		List<Student> temp =null;
+		if (lists != null && std != null) {
+			String a = std.getRank().getRank();
+			temp = new ArrayList<Student>();
+			if (!std.getRank().getRank().equals("")) {
+				for (int i = 0; i < lists.size(); i++) {
+					String a2 = lists.get(i).getRank().getRank();
+					if (a2.equals(a)) {
+						System.out.println(a2+":"+a);
+						temp.add(lists.get(i));
+					}
 				}
 			}
 		}
